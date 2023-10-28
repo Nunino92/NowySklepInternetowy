@@ -24,11 +24,11 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_premium = models.BooleanField(default=False)
-    wojewodztwo = models.TextField(max_length=30, default='')
-    miasto = models.TextField(max_length=30, default='')
-    ulica = models.TextField(max_length=30, default='')
-    nr_domu = models.TextField(max_length=3, default='')
-    kod_pocztowy = models.TextField(max_length=6, default='')
+    wojewodztwo = models.CharField(max_length=30, default='')
+    miasto = models.CharField(max_length=30, default='')
+    ulica = models.CharField(max_length=30, default='')
+    nr_domu = models.CharField(max_length=6, default='')
+    kod_pocztowy = models.CharField(max_length=6, default='')
 
     objects = CustomUserManager()
 

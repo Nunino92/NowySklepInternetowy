@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'panel',
     'bootstrap5',
     'fontawesomefree',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'sklep.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -88,7 +89,11 @@ DATABASES = {
     }
 }
 
-
+EMAIL_HOST = 'smtp.emaillabs.net.pl'
+EMAIL_HOST_USER = '1.nunino.smtp'
+EMAIL_HOST_PASSWORD = 'c06PZBi9'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'glowny.CustomUser'

@@ -1,15 +1,16 @@
 import requests
-from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.views import LoginView, PasswordChangeView
-from django.shortcuts import render, redirect
+
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import logout, login, update_session_auth_hash
 from django.urls import reverse_lazy
+from django.core.mail import send_mail
 
 from przedmioty.models import Category, Item
 
 from .forms import CustomUserCreationForm, UserProfileUpdateForm, PasswordsChangeForm
+
 
 
 class CustomLoginView(LoginView):
@@ -18,6 +19,15 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
         login(self.request, user)
+
+        # Wysyłanie e-maila po zalogowaniu
+        subject = 'Witaj w naszym serwisie!'
+        message = f'Witaj {user.first_name} {user.last_name}! Dziękujemy za zalogowanie się.'
+        from_email = 'bajdak123@gmail.com'  # Zmień na własny adres e-mail
+        recipient_list = [user.email]
+
+        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+
         return super().form_valid(form)
 def index(request):
     items = Item.objects.filter(is_sold=False)[0:6]
@@ -54,39 +64,43 @@ def update(request):
         form = UserProfileUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('glowny:index')  # Przekieruj na odpowiednią stronę po udanej aktualizacji
+
+            # Wysyłanie e-maila po aktualizacji danych
+            subject = 'Twoje dane zostały zaktualizowane'
+            message = 'Twoje dane w naszym serwisie zostały zaktualizowane.'
+            from_email = 'bajdak123@gmail.com'
+            recipient_list = [request.user.email]
+
+            send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+
+            return redirect('glowny:index')
     else:
         form = UserProfileUpdateForm(instance=request.user)
 
     return render(request, 'settings.html', {'form': form})
 
 
-@login_required
-def update_password(request):
-    if request.method == 'POST':
-        form = CustomPasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # To keep the user logged in
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('glowny:update_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = CustomPasswordChangeForm(request.user)
-    return render(request, 'update_password.html', {'form': form})
-
-
-
 class PasswordsChangeView(PasswordChangeView):
     form_class = PasswordsChangeForm
     success_url = reverse_lazy('glowny:index')
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+
+
+        subject = 'Zmiana hasła w serwisie'
+        message = 'Twoje hasło zostało zmienione.'
+        from_email = 'bajdak123@gmail.com'
+        recipient_list = [self.request.user.email]
+
+        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+
+        return response
 
 
 def weather_widget(request):
     api_key = 'fae9322d74e2030d3d8a1911d0eb385d'
-    city = request.user.miasto   # Zmień na miasto, dla którego chcesz wyświetlać pogodę
+    city = request.user.miasto
 
     url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric'
 

@@ -16,6 +16,7 @@ class NewItemForm(forms.ModelForm):
         }
 
 class EditItemForm(forms.ModelForm):
+
     class Meta:
         model = Item
         fields = ('category', 'name', 'description', 'price', 'image', 'is_sold')
@@ -26,3 +27,4 @@ class EditItemForm(forms.ModelForm):
             'price': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'image': forms.FileInput(attrs={'class': INPUT_CLASSES})
         }
+

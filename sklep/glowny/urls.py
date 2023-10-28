@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout/', views.user_logout, name='logout'),
     path('settings/', views.update, name='update'),
     path('password/', PasswordsChangeView.as_view(template_name='update_password.html'), name='update_password'),
+    # path('send_email/', views.send_email, name='send_email'),
     path('weather/', views.weather_widget, name='weather_widget'),
 
 ]

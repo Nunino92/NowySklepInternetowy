@@ -1,60 +1,66 @@
 {% extends 'base.html' %}
 
-{% block title %}Update{% endblock %}
+{% block title %}Update Profile{% endblock %}
 
 {% block content %}
 <div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
-    <h1 class="mb-6 text-3xl">Update</h1>
+    <h1 class="mb-6 text-3xl text-center">Update Profile</h1>
 
-    <form method="post" action="{% url 'glowny:update' %}">
+    <form method="post" action="{% url 'glowny:update' %}" class="space-y-4">
         {% csrf_token %}
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Email</label><br>
-            {{ form.email }}
-
-        <div class="mb-3">
-            <label class="inline-block mb-2">First Name</label><br>
-            {{ form.first_name }}
+        <div class="mb-4">
+            <label for="email" class="block mb-2 text-gray-600">Email:</label>
+            <input type="text" id="email" name="email" class="w-full py-2 px-3 rounded-xl border" value="{{ form.email.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Last Name</label><br>
-            {{ form.last_name }}
+        <div class="mb-4">
+            <label for="first_name" class="block mb-2 text-gray-600">First Name:</label>
+            <input type="text" id="first_name" name="first_name" class="w-full py-2 px-3 rounded-xl border" value="{{ form.first_name.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Województwo</label><br>
-            {{ form.wojewodztwo }}
+        <div class="mb-4">
+            <label for="last_name" class="block mb-2 text-gray-600">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" class="w-full py-2 px-3 rounded-xl border" value="{{ form.last_name.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Miasto</label><br>
-            {{ form.miasto }}
+        <div class="mb-4">
+            <label for="wojewodztwo" class="block mb-2 text-gray-600">Województwo:</label>
+            <input type="text" id="wojewodztwo" name="wojewodztwo" class="w-full py-2 px-3 rounded-xl border" value="{{ form.wojewodztwo.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Ulica</label><br>
-            {{ form.ulica }}
+        <div class="mb-4">
+            <label for="miasto" class="block mb-2 text-gray-600">Miasto:</label>
+            <input type="text" id="miasto" name="miasto" class="w-full py-2 px-3 rounded-xl border" value="{{ form.miasto.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Numer domu</label><br>
-            {{ form.nr_domu }}
+        <div class="mb-4">
+            <label for="ulica" class="block mb-2 text-gray-600">Ulica:</label>
+            <input type="text" id="ulica" name="ulica" class="w-full py-2 px-3 rounded-xl border" value="{{ form.ulica.value }}">
         </div>
 
-        <div class="mb-3">
-            <label class="inline-block mb-2">Kod pocztowy</label><br>
-            {{ form.kod_pocztowy }}
+        <div class="mb-4">
+            <label for="nr_domu" class="block mb-2 text-gray-600">Numer domu:</label>
+            <input type="text" id="nr_domu" name="nr_domu" class="w-full py-2 px-3 rounded-xl border" value="{{ form.nr_domu.value }}">
+        </div>
+
+        <div class="mb-4">
+            <label for="kod_pocztowy" class="block mb-2 text-gray-600">Kod pocztowy:</label>
+            <input type="text" id="kod_pocztowy" name="kod_pocztowy" class="w-full py-2 px-3 rounded-xl border" value="{{ form.kod_pocztowy.value }}">
         </div>
 
         {% if form.errors %}
-            <div class="mb-3 p-6 bg-red-100 rounded-xl">
-                {{ form.errors }}
+            <div class="p-6 bg-red-100 rounded-xl">
+                <ul class="list-disc list-inside text-red-600">
+                    {% for error in form.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
             </div>
         {% endif %}
 
-        <button class="mb-6 py-2 px-4 text-lg bg-blue-500 hover:bg-blue-900 rounded-xl text-white">Update</button>
+        <button class="mt-6 py-4 px-8 text-lg bg-blue-500 hover:bg-blue-900 rounded-xl text-white block mx-auto">Update</button>
+
     </form>
 </div>
 

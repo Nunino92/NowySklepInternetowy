@@ -22,7 +22,7 @@ class Item(models.Model):
     category = models.ForeignKey(Category, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True, null=True)
-    price = models.FloatField()
+    price = models.DecimalField(max_digits=12,decimal_places=2)
     min_price = models.FloatField(null=True, blank=True)
     image = models.ImageField(upload_to='item_images', blank=True, null=True)
     is_sold = models.BooleanField(default=False)
@@ -32,3 +32,5 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+

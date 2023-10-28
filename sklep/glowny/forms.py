@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import update_session_auth_hash
+
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from .models import CustomUser
 from .widget import WeatherWidgetForm
