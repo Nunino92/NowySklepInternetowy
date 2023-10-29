@@ -1,6 +1,6 @@
 from django import forms
 
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm, PasswordResetForm
 from .models import CustomUser
 from .widget import WeatherWidgetForm
 
@@ -32,3 +32,6 @@ class PasswordsChangeForm(PasswordChangeForm):
 class MyForm(forms.Form):
     some_field = forms.CharField(label='Some Field')
     weather_location = WeatherWidgetForm()
+
+
+

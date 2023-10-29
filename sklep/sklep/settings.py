@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'bootstrap5',
     'fontawesomefree',
     'crispy_forms',
+    'konto',
 ]
 
 MIDDLEWARE = [
@@ -88,12 +89,22 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-EMAIL_HOST = 'smtp.emaillabs.net.pl'
-EMAIL_HOST_USER = '1.nunino.smtp'
-EMAIL_HOST_PASSWORD = 'c06PZBi9'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.emaillabs.net.pl'
+# EMAIL_HOST_USER = '1.nunino.smtp'
+# EMAIL_HOST_PASSWORD = 'c06PZBi9'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+AUTH_PASSWORD_RESET_TEMPLATE = 'glowny/password_reset.html'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bajdak123@gmail.com'
+EMAIL_HOST_PASSWORD = 'jirynirrtkfxbdzw'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'glowny.CustomUser'
