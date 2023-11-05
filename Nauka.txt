@@ -1,0 +1,5 @@
+__init__.pl ->
+migrations migrate->
+pip ->
+ORM objects.filter/all ->
+Admin dodawanie modeli ->

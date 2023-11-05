@@ -3,39 +3,57 @@
 {% block title %}Log in{% endblock %}
 
 {% block content %}
+<!-- Rozszerzenie szablonu bazowego 'base.html' i zdefiniowanie tytułu strony jako "Log in" -->
+
 <div class="w-1/2 my-6 mx-auto p-6 bg-gray-100 rounded-xl">
+    <!-- Kontener o szerokości 50%, wyśrodkowany w poziomie, tłem szarym i zaokrąglonymi rogami -->
+
     <h1 class="mb-6 text-3xl text-center">Log in</h1>
+    <!-- Nagłówek "Log in" o rozmiarze 3xl (bardzo duża czcionka) i wyśrodkowany na środku -->
 
     <form method="post" action=".">
         {% csrf_token %}
+        <!-- Formularz POST z dodanym tokenem CSRF -->
 
         <div class="mb-4">
             <label for="id_username" class="block mb-2 text-gray-600"><i class="fa-regular fa-envelope"></i> Email:</label>
+            <!-- Pole etykiety "Email" z ikoną -->
             <input type="email" id="id_username" name="username" class="w-full py-2 px-3 rounded-xl border">
+            <!-- Pole wprowadzania tekstu na adres email -->
         </div>
 
         <div class="mb-4">
             <label for="id_password" class="block mb-2 text-gray-600"><i class="fa-solid fa-key"></i> Password:</label>
+            <!-- Pole etykiety "Password" z ikoną klucza -->
             <input type="password" id="id_password" name="password" class="w-full py-2 px-3 rounded-xl border">
+            <!-- Pole wprowadzania hasła -->
         </div>
+
         <div>
             <p class="text-center"><a class="mx-auto icon-link" href="{% url 'glowny:signup' %}">Brak konta? Zarejestruj się</a></p>
             <br>
             <p class="text-center"><a class="mx-auto icon-link" href="{% url 'konto:password_reset' %}">Nie pamiętasz hasła?</a></p>
-
+            <!-- Linki do rejestracji i resetowania hasła -->
         </div>
+
         {% if form.errors or form.non_field_errors %}
             <div class="mb-4 p-6 bg-red-100 rounded-xl">
+                <!-- Wyświetlenie błędów formularza w czerwonym tle -->
+
                 <ul class="list-disc list-inside text-red-600">
                     {% for field in form %}
                         {{ field.errors }}
                     {% endfor %}
+                    <!-- Wyświetlenie błędów pól formularza -->
                     <li>{{ form.non_field_errors }}</li>
+                    <!-- Wyświetlenie błędów nieprzypisanych do pól -->
                 </ul>
             </div>
         {% endif %}
-    <br>
+        <br>
         <button class="py-4 px-8 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white block mx-auto">Submit</button>
+        <!-- Przycisk "Submit" do wysłania formularza -->
     </form>
 </div>
 {% endblock %}
+<!-- Zakończenie bloku 'content' -->

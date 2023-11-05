@@ -1,0 +1,8 @@
+1. Prezentacja
+2. Weryfikacja szablonów
+3. Bazy danych -> Modele(głowny, przedmioty)
+4. Testy -> urls, forms, models, views
+5. Weryfikacja zabezpieczeń CSRF_TOKEN, {% if request.user.is_authenticated %}, @login_required
+6. Weryfikacja i rozmowa o kodzie.
+7. Weryfikacja testów -> omówienie najistotniejszych
+8. Weryfikacja specyficznych elementów

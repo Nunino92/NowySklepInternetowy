@@ -1,0 +1,7 @@
+1. Kup Teraz -> Koszyk
+2. Email po zarejestrowaniu
+3. Context processors -> Widget Pogodowy
+4. Jakaś ładna główna strona
+5. Formy płatności
+6. Automatyczne wylogowanie
+7. Usprawnić podkategorie

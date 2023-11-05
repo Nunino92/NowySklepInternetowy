@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -27,9 +26,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'  # URL, na który użytkownicy zostaną przekierowani w przypadku próby dostępu do zasobów, które wymagają uwierzytelnienia, ale nie są zalogowani.
+LOGIN_REDIRECT_URL = '/'  # URL, na który użytkownicy zostaną przekierowani po pomyślnym zalogowaniu. Zostana na tej samej co byli
+LOGOUT_REDIRECT_URL = '/'  # URL, na który użytkownicy zostaną przekierowani po pomyślnym wylogowaniu. Zostana na tej samej co byli.
 
 # Application definition
 
@@ -64,7 +63,7 @@ ROOT_URLCONF = 'sklep.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates'],  # by szukało templates w folderze templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +77,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sklep.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -103,11 +101,9 @@ EMAIL_HOST_PASSWORD = 'jirynirrtkfxbdzw'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
-AUTH_USER_MODEL = 'glowny.CustomUser'
+AUTH_USER_MODEL = 'glowny.CustomUser'  # Potrzebne by stworzyć inny model do User
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -124,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -136,14 +131,12 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
+STATIC_URL = 'static/'  # urls static css np boostrap-5
+MEDIA_URL = 'media/'  # url gdzie beda dostepne pliki multimedialne, zdjecia do aukcji.
+MEDIA_ROOT = BASE_DIR / 'media'  # sciezka do katalogu media -> media. Tworzy sie automatycznie po dodaniu zdjecia.
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

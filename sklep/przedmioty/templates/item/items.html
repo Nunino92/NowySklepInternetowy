@@ -19,7 +19,7 @@
                 {% for category in categories %}
                     <li class="py-2 px-2 rounded-xl{% if category.id == category_id %} bg-gray-200{% endif %}">
                         <a href="{% url 'item:items' %}?query={{ query }}&category={{ category.id }}">{{ category.name }} - {{ category.desciption }}</a>
-                        <!-- Reszta Twojego kodu na temat podkategorii tutaj -->
+                        <!-- Reszta kodu na temat podkategorii tutaj -->
                     </li>
                 {% endfor %}
             </ul>

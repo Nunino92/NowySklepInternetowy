@@ -1,0 +1,10 @@
+class Meta -> służy do definiowania metadanych związanego z modelem,
+takich jak kolejność sortowania rekordów, dostosowywanie zachowania modelu,
+a także konfiguracje specyficzne dla bazy danych.
+
+required -> atrybut obowiązkowy przed zatwierdzeniem formularza.
+widget -> atrybut jak maja być wyswietlone formularze w HTML np PasswordInput -> beda zakropkowane.
+attrs -> atrybut do danego formularza ->
+           class form-control -> pole CSS o nazwie form-control. Stylizacja pola wizualnie.
+           type='password' ->pole typu password do zakrywania wprowadzonego tekstu.
+

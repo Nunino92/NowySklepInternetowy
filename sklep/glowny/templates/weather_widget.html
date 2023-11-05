@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
 
 {% block title %} Weather {% endblock %}
+<!-- Rozszerzenie szablonu bazowego 'base.html' i zdefiniowanie tytułu strony jako "Weather" -->
 
 {% block content %}
+<!-- Otwarcie bloku 'content' -->
 
-    <div class="weather-widget">
-        <h2>Pogoda w {{ request.user.miasto }}</h2>
-        <p>Temperatura: {{ temperature }}°C</p>
-        <p>Pogoda: {{ weather_description }}</p>
-    </div>
+<div class="weather-widget" style="text-align: center;">
+    <!-- Kontener na widget pogodowy, ustawiamy tekst na środku -->
+
+    <h2>Pogoda w {{ request.user.miasto }}</h2>
+    <!-- Nagłówek z wyświetlaniem miasta użytkownika z obiektu 'request' -->
+
+    <p>Temperatura: {{ temperature }}°C</p>
+    <!-- Wyświetlenie temperatury w stopniach Celsjusza -->
+
+    <p>Pogoda: {{ weather_description }}</p>
+    <!-- Wyświetlenie opisu pogody -->
+</div>
 
 {% endblock %}

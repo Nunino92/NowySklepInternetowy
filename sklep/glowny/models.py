@@ -1,23 +1,43 @@
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+# Importowanie niezbędnych klas i modeli z modułu 'auth' Django.
+
 from django.db import models
+# Importowanie modułu 'models' z Django, który pozwala na definiowanie modeli bazy danych.
 
 class CustomUserManager(BaseUserManager):
+    # Definicja niestandardowego managera użytkownika.
+
     def create_user(self, email, password=None, **extra_fields):
+        # Metoda do tworzenia zwykłego użytkownika.
         if not email:
             raise ValueError('Email address is required')
+        # Sprawdzenie, czy podano adres email.
+
         email = self.normalize_email(email)
+        # Normalizacja adresu email (np. zamiana na małe litery).
+
         user = self.model(email=email, **extra_fields)
+        # Tworzenie instancji modelu CustomUser.
+
         user.set_password(password)
+        # Ustawienie hasła użytkownika.
+
         user.save(using=self._db)
+        # Zapisanie użytkownika w bazie danych.
+
         return user
 
     def create_superuser(self, email, password=None, **extra_fields):
+        # Metoda do tworzenia superużytkownika (administratora).
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
 
         return self.create_user(email, password, **extra_fields)
+        # Utworzenie superużytkownika, który posiada uprawnienia administratora.
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    # Definicja niestandardowego modelu użytkownika.
+
     email = models.EmailField(unique=True)
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -31,11 +51,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     kod_pocztowy = models.CharField(max_length=6, default='')
 
     objects = CustomUserManager()
+    # Przypisanie managera do modelu CustomUser.
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    # Definiowanie pól wymaganych podczas tworzenia użytkownika.
 
     def __str__(self):
         return self.email
-
-
+        # Zwracanie adresu email użytkownika jako jego reprezentacji tekstowej (np. w panelu administracyjnym).

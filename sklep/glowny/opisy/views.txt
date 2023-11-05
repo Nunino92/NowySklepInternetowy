@@ -1,0 +1,10 @@
+form.get_form() -> kodu pobiera obiekt użytkownika z formularza logowania.
+fail_silently -> powoduje, ze nie dostajemy informacji czy email dotarl czy nie.
+super().form_valid(form) -> jest używane w celu rozszerzenia lub dostosowania zachowania widoku,
+zachowując jednocześnie jego podstawowe funkcje. W tym konkretnym przypadku, po zalogowaniu użytkownika i wysłaniu powitalnego e-maila,
+widok kontynuuje swoje domyślne działanie po pomyślnym zalogowaniu.
+
+success_url = reverse_lazy('glowny:index') -> przeniesienie w razie sekcesu
+response -> Odpowiedz HTTP
+render -> generowanie odpowiedzi HTML na podstawie szablonu. (request, szablon, kontekst)
+    kontekst - slownik danych, ktory ma byc wykorzystany do szablonu i wykorzystany do renderowania strony
