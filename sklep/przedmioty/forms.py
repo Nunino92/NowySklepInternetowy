@@ -2,6 +2,7 @@ from django import forms
 from .models import Item, Category
 
 INPUT_CLASSES = 'w-full py-4 px-6 rounded-xl border'
+# Klasa formularza do tworzenia nowego przedmiotu.
 
 class NewItemForm(forms.ModelForm):
     class Meta:
@@ -14,6 +15,7 @@ class NewItemForm(forms.ModelForm):
             'price': forms.TextInput(attrs={'class': INPUT_CLASSES}),
             'image': forms.FileInput(attrs={'class': INPUT_CLASSES})
         }
+# Klasa formularza do edycji istniejącego przedmiotu.
 
 class EditItemForm(forms.ModelForm):
 

@@ -3,12 +3,54 @@ migrations migrate-> Podsumowując, makemigrations służy do tworzenia plików 
 pip -> narzedzie sluzy do zarzadzania pakietami, bibliotekami
 ORM objects.filter/all -> ORM technika pozwalajaca na mapowanie obiektow w bazie danych. filter danych, ktore spelniaja okreslone warunki. All czyli wszystkie
 Admin dodawanie modeli -> tworzenie i zarzadzenie danych w bazie danych (models) poprzez admin
-Dekoratory -> Dekorator w Pythonie to funkcja, która przyjmuje inną funkcję jako argument i zwraca funkcję, która modyfikuje zachowanie funkcji źródłowej. Dekoratory są używane do dodawania funkcjonalności do funkcji lub metod w elastyczny sposób, co pozwala na ich ponowne użycie w różnych kontekstach.
+Dekoratory -> Dekorator w Pythonie to funkcja, która przyjmuje inną funkcję jako argument i zwraca funkcję, która modyfikuje zachowanie funkcji źródłowej. Dekoratory są używane do dodawania funkcjonalności do funkcji lub metod w elastyczny sposób,
+ co pozwala na ich ponowne użycie w różnych kontekstach.
+ def funkcja(func):
+    def wewnetrzna():
+        ('***')
+    return wewnetrzna
+@funkcja
+def cos():
+    print()
+cos()
 *args -> pozwala na przekazanie dowolnej liczby argumentów, *args. W wyniku otrzymamy krotke(,,,). Są elastyczne pod wzgledem ile mozemy przekazac argumentow.
 **kwargs -> pozwala na przekazywanie dowolne liczby argumentów, w wyniku otrzymujemy dict (klucz-wartosc). Oba przekazywania dziala w funkcji def funkcja(*args, **kwargs)
-self -> referencja do samego obiektu, na którym operuje metoda.
+self -> Parametr self jest koniecznym pierwszym parametrem w metodach, stosowanym by metody mogły odnosić się do obiektu, na którym są wołane.
 raise -> wywolanie wyjątku w trakcie działania programu.
+wyjatki -> przerywaja program, gdy napotkaja bład
+try -> except -> finally
+klasa abstrakcyjna -> @abstracta
 class meta -> wewnatrzna klasa w modelach Django. Słuzy do definiowanie metadanych zwiazanych z modelami.
 triggery -> uzywane w SQL, wykonywane polecenia automatycznie w odpowiedzi na okreslone zdarzenia lub operacje.
-mutowalne -> lista, slownik, set
-niemutowalne -> tupla, string, number
+mutowalne(modyfikowane) -> lista(swobodnie dodac odejmowac), slownik(klucz-wartosc), set(bez powtarzania, nie mozna sie dostać)
+niemutowalne(niemodyfikowane) -> tupla(raz zrobiona,nie mozna jej zmienic), string, number, range
+UTF-8 ->
+is/is not -> operator porownania identyczności, pamiec i wartosc
+==/!= -> operator porownania wartosci
+style -> camel case (veryLongString), upper camel case(ZmiennaPisanaUpperCamelCasem), snake case(kolejna_nazwa_zmiennej)
+zmienne globalne -> w obrebie całego pliku
+zmienne lokalne -> w obrebie danego bloku
+moduł -> plik z rozszerzeniem .py, czesc kodu, ktore mozna wykorzystać w innym pliku
+pakiet -> katalog z modułow i pakietów np przedmioty
+OOP -> klasa -> metody -> konstruktor __init__(self)
+abstrakcja -> ograniczenie cech obiektu ze świata rzeczywistego do cech istotnych, kluczowych z punktu widzenia programisty
+              np.  jest jedynie uogólnieniem innych klas, lecz sama nie istnieje jakas klasa np class Figura(ABC)
+              @abstramethod def obwod(self)pass:
+hermetyzacja -> ukrywanie dostępu do prywatnych detali obiektu
+dziedziczenie -> rozszerzanie klas, wielodziedziczenie super().
+polimorfizm -> możliwość stosowania tego samego interfejsu dla obiektów różnych typów,
+__(cos)__ metoda magiczna -> metody usprawniajace naszą prace np: __str__ -> przekazuje jakiego stringa wyswietlic
+pole chronione _ -> moze być aktulizowane tylko przez metode danego obiektu ale nie musi.
+pola  prywatne __ -> mozliwosc zmiany tylko metode. w przeciwnym razie wyrzuci wyjatek AttributeError
+operacje na plikach -> 'r'-read, 'w'-write
+TDD -> Test-Driven-Development - technika tworzenia oprogramowania
+serializacja -> pickle-bajty, CSV-w plikach tekstowych[], JSON-w tekstowch w formie słownika{:}
+menadzer kontekstu -> with, zamyka otwarty plik
+yield -> dziala podobnie do return, ale zwraca wartosc i zapamietuje ją.
+lambda -> lambda = lambda x: x+1, lambda(1) -> 2
+lambda filter/map -> mapuje w sposob przekazany np liczby[1,2,3,4] lambda = list(map(lambda x:x+1, liczby) /2,3,4,5
+                  -> filter lambda = list(lambda x: x%2, liczba)   ,1,3,5
+generatory -> korzysta z słowa klucz yield
+iterator __iter__ ->  jest wywoływana na obiekcie, kiedy próbujemy utworzyć iterator dla tego obiektu, powinna zwracać obiekt iteratora, który implementuje metodę __next__.
+iterator __next__ -> jest wywoływana na obiekcie iteratora i powinna zwracać kolejny element sekwencji lub podnosić wyjątek StopIteration, gdy nie ma już więcej elementów do zwrócenia.
+                        po kazdym wywołaniu przechodzi do nastepnego elementu.
