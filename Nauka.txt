@@ -1,5 +1,14 @@
-__init__.pl ->
-migrations migrate->
-pip ->
-ORM objects.filter/all ->
-Admin dodawanie modeli ->
+__init__.pl -> Plik __init__.py wewnątrz katalogu w języku Python służy do określenia, że dany katalog ma być traktowany jako pakiet, co umożliwia organizację kodu na bardziej zrozumiane i hierarchiczne sposoby.
+migrations migrate-> Podsumowując, makemigrations służy do tworzenia plików migracji na podstawie modeli, a migrate służy do aplikowania tych migracji do bazy danych, umożliwiając dostosowanie schematu bazy danych do zmian w modelach Django.
+pip -> narzedzie sluzy do zarzadzania pakietami, bibliotekami
+ORM objects.filter/all -> ORM technika pozwalajaca na mapowanie obiektow w bazie danych. filter danych, ktore spelniaja okreslone warunki. All czyli wszystkie
+Admin dodawanie modeli -> tworzenie i zarzadzenie danych w bazie danych (models) poprzez admin
+Dekoratory -> Dekorator w Pythonie to funkcja, która przyjmuje inną funkcję jako argument i zwraca funkcję, która modyfikuje zachowanie funkcji źródłowej. Dekoratory są używane do dodawania funkcjonalności do funkcji lub metod w elastyczny sposób, co pozwala na ich ponowne użycie w różnych kontekstach.
+*args -> pozwala na przekazanie dowolnej liczby argumentów, *args. W wyniku otrzymamy krotke(,,,). Są elastyczne pod wzgledem ile mozemy przekazac argumentow.
+**kwargs -> pozwala na przekazywanie dowolne liczby argumentów, w wyniku otrzymujemy dict (klucz-wartosc). Oba przekazywania dziala w funkcji def funkcja(*args, **kwargs)
+self -> referencja do samego obiektu, na którym operuje metoda.
+raise -> wywolanie wyjątku w trakcie działania programu.
+class meta -> wewnatrzna klasa w modelach Django. Słuzy do definiowanie metadanych zwiazanych z modelami.
+triggery -> uzywane w SQL, wykonywane polecenia automatycznie w odpowiedzi na okreslone zdarzenia lub operacje.
+mutowalne -> lista, slownik, set
+niemutowalne -> tupla, string, number

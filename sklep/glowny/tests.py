@@ -91,12 +91,6 @@ class SignupViewTest(TestCase):
         response = self.client.post(reverse('glowny:signup'), data)
         self.assertEqual(response.status_code, 302)
 
-
-
-from django.test import TestCase
-from django.urls import reverse
-from .models import CustomUser
-
 class CustomUserTestCase(TestCase):
     def setUp(self):
         # Przygotowanie danych testowych

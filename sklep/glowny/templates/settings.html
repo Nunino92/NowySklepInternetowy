@@ -7,11 +7,13 @@
     <h1 class="mb-6 text-3xl text-center">Update Profile</h1>
 
     <form method="post" action="{% url 'glowny:update' %}" class="space-y-4">
+        <!-- action -> gdzie zostanie wyslane zadanie HTTP po kliknieciu submit.Oznacza to, że formularz zostanie wysłany do widoku o nazwie 'update' w aplikacji o nazwie 'glowny' w ramach aplikacji Django. -->
         {% csrf_token %}
 
         <div class="mb-4">
             <label for="email" class="block mb-2 text-gray-600">Email:</label>
             <input type="text" id="email" name="email" class="w-full py-2 px-3 rounded-xl border" value="{{ form.email.value }}">
+            <!-- value -> poczatkowa wartosc pola wejsciowego -->
         </div>
 
         <div class="mb-4">

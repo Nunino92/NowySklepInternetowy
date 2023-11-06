@@ -1,7 +1,0 @@
-Formularz POST -> odczytanie danych przeslane przez formularz i przetworzenie wg widoku/views
-{% csrf_token %} -> zabezpieczenie przed atakami CSRF
-Atak ma na celu skłonić użytkownika zalogowanego do serwisu internetowego do tego, aby uruchomił on odnośnik,
-którego otwarcie wykona w owym serwisie akcję, do której atakujący nie miałby w przeciwnym razie dostępu. Na przykład, użytkowniczka Małgosia,
-na stałe zalogowana do forum internetowego, może w pewnym momencie otworzyć spreparowany przez Jasia link,
-który zmieni jej dane kontaktowe albo usunie wątek dyskusji. Jako link może również posłużyć obrazek, którego adres został odpowiednio przygotowany,
-a konsekwencje wykonanej akcji mogą być znacznie poważniejsze.
