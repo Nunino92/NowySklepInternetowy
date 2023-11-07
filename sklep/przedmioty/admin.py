@@ -9,11 +9,11 @@ class CategoryAdmin(admin.ModelAdmin):
             return ", ".join([subcategory.name for subcategory in subcategories])
         return "-"
 
-    display_subcategories.short_description = 'Subcategories'  # Nadanie nazwy dla wyświetlania podkategorii.
+    display_subcategories.short_description = 'Subcategories'
 
-    list_display = ('name', 'desciption', 'display_subcategories')  # Wyświetlane kolumny w liście kategorii w panelu admina.
-    list_filter = ('parent_category',)  # Filtracja kategorii według rodzica.
-    search_fields = ('name', 'desciption')  # Możliwość wyszukiwania kategorii po nazwie lub opisie.
+    list_display = ('name', 'desciption', 'display_subcategories')
+    list_filter = ('parent_category',)
+    search_fields = ('name', 'desciption')
 
-admin.site.register(Category, CategoryAdmin)  # Zarejestrowanie modelu Category z dostosowanym panelem admina.
-admin.site.register(Item)  # Zarejestrowanie modelu Item z domyślnym panelem admina.
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Item)
