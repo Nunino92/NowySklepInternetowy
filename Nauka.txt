@@ -1,5 +1,5 @@
 __init__.pl -> Plik __init__.py wewnątrz katalogu w języku Python służy do określenia, że dany katalog ma być traktowany jako pakiet, co umożliwia organizację kodu na bardziej zrozumiane i hierarchiczne sposoby.
-migrations migrate-> Podsumowując, makemigrations służy do tworzenia plików migracji na podstawie modeli, a migrate służy do aplikowania tych migracji do bazy danych, umożliwiając dostosowanie schematu bazy danych do zmian w modelach Django.
+migrations migrate->  makemigrations służy do tworzenia plików migracji na podstawie modeli, a migrate służy do aplikowania tych migracji do bazy danych, umożliwiając dostosowanie schematu bazy danych do zmian w modelach Django.
 pip -> narzedzie sluzy do zarzadzania pakietami, bibliotekami
 ORM objects.filter/all -> ORM technika pozwalajaca na mapowanie obiektow w bazie danych. filter danych, ktore spelniaja okreslone warunki. All czyli wszystkie
 Admin dodawanie modeli -> tworzenie i zarzadzenie danych w bazie danych (models) poprzez admin
@@ -8,6 +8,7 @@ Dekoratory -> Dekorator w Pythonie to funkcja, która przyjmuje inną funkcję j
  def funkcja(func):
     def wewnetrzna():
         ('***')
+        (func)
     return wewnetrzna
 @funkcja
 def cos():
@@ -24,7 +25,6 @@ class meta -> wewnatrzna klasa w modelach Django. Słuzy do definiowanie metadan
 triggery -> uzywane w SQL, wykonywane polecenia automatycznie w odpowiedzi na okreslone zdarzenia lub operacje.
 mutowalne(modyfikowane) -> lista(swobodnie dodac odejmowac), slownik(klucz-wartosc), set(bez powtarzania, nie mozna sie dostać)
 niemutowalne(niemodyfikowane) -> tupla(raz zrobiona,nie mozna jej zmienic), string, number, range
-UTF-8 ->
 is/is not -> operator porownania identyczności, pamiec i wartosc
 ==/!= -> operator porownania wartosci
 style -> camel case (veryLongString), upper camel case(ZmiennaPisanaUpperCamelCasem), snake case(kolejna_nazwa_zmiennej)
@@ -43,7 +43,7 @@ __(cos)__ metoda magiczna -> metody usprawniajace naszą prace np: __str__ -> pr
 pole chronione _ -> moze być aktulizowane tylko przez metode danego obiektu ale nie musi.
 pola  prywatne __ -> mozliwosc zmiany tylko metode. w przeciwnym razie wyrzuci wyjatek AttributeError
 operacje na plikach -> 'r'-read, 'w'-write
-TDD -> Test-Driven-Development - technika tworzenia oprogramowania
+TDD -> Test-Driven-Development - technika tworzenia oprogramowania testowego
 serializacja -> pickle-bajty, CSV-w plikach tekstowych[], JSON-w tekstowch w formie słownika{:}
 menadzer kontekstu -> with, zamyka otwarty plik
 yield -> dziala podobnie do return, ale zwraca wartosc i zapamietuje ją.

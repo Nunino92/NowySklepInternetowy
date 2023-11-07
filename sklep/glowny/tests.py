@@ -11,7 +11,9 @@ from django.contrib.auth import get_user_model
 
 class GlownyUrlsTest(SimpleTestCase):
     def test_index_url(self):
+        # Pobierz odwrotny URL (reverse URL) do widoku 'index' w aplikacji 'glowny'.
         url = reverse('glowny:index')
+        # Porównaj funkcję obsługującą ten URL z oczekiwanym widokiem 'index'.
         self.assertEqual(resolve(url).func, views.index)
 
     def test_contact_url(self):
@@ -46,20 +48,19 @@ class GlownyUrlsTest(SimpleTestCase):
 class IndexViewTest(TestCase):
     #Czy zwraca kod 200 - ok oraz czy dostepny jest strona głowna
     def test_index_view(self):
-
+        # Wykonaj żądanie GET do widoku 'index' w aplikacji 'glowny' za pomocą klienta testowego.
         response = self.client.get(reverse('glowny:index'))
+        # Sprawdź, czy status HTTP odpowiedzi to 200 (OK).
         self.assertEqual(response.status_code, 200)
-
+        # Sprawdź, czy używany jest oczekiwany szablon 'index.html'.
         self.assertTemplateUsed(response, 'index.html')
 
 
 class ContactViewTest(TestCase):
     #Zwraca kod 200 oraz dostep do strony contract.html
     def test_contact_view(self):
-
         response = self.client.get(reverse('glowny:contact'))
         self.assertEqual(response.status_code, 200)
-
         self.assertTemplateUsed(response, 'contact.html')
 
 
@@ -69,7 +70,6 @@ class SignupViewTest(TestCase):
 
         response = self.client.get(reverse('glowny:signup'))
         self.assertEqual(response.status_code, 200)
-
         self.assertTemplateUsed(response, 'signup.html')
 
     #Sprawdza czy działa rejestracja i kod 200
@@ -89,7 +89,10 @@ class SignupViewTest(TestCase):
 
 
         response = self.client.post(reverse('glowny:signup'), data)
+        # Wykonaj żądanie POST do widoku 'signup' w aplikacji 'glowny' z danymi przesłanymi jako 'data'.
         self.assertEqual(response.status_code, 302)
+        # Sprawdź, czy status HTTP odpowiedzi to 302 (przekierowanie).
+
 
 class CustomUserTestCase(TestCase):
     def setUp(self):
@@ -123,7 +126,7 @@ class CustomUserTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, reverse('glowny:login') + f'?next={reverse("glowny:update")}')
 
-    # Możesz dodać więcej testów dla innych widoków w podobny sposób.
+
 
 class CustomUserFormTestCase(TestCase):
     def test_custom_user_creation_form_valid_data(self):

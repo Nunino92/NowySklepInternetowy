@@ -6,4 +6,4 @@ class IndexViewTest(TestCase):
         response = self.client.get(reverse('glowny:index'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index.html')
-        # Dodaj testy, które sprawdzają treść wygenerowanej strony
+
