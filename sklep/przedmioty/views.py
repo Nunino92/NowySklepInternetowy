@@ -7,12 +7,12 @@ from .models import Category, Item
 
 
 
-# Importy i dekoratory są poprawnie używane.
+
 
 def items(request):
     # Pobieranie parametrów zapytania GET, tj. 'query' i 'category'.
-    query = request.GET.get('query', '')
-    category_id = request.GET.get('category', 0)
+    query = request.GET.get('query', '') # Wyszukiwanie wg nazwy lub opisu przedmiotu.
+    category_id = request.GET.get('category', 0) # Filtruj przedmioty według kategorii.
 
     # Pobieranie tylko unikalnych kategorii, które nie mają podkategorii.
     categories = Category.objects.filter(subcategories__isnull=True).distinct()
@@ -30,12 +30,12 @@ def items(request):
 
     # Renderowanie szablonu z kontekstem zawierającym przefiltrowane przedmioty i inne dane.
     return render(request, 'item/items.html', {
-        'items': items,
-        'query': query,
-        'categories': categories,
-        'category_id': int(category_id)
+        'items': items, # Przefiltrowane przedmioty.
+        'query': query, # Wartość parametru 'query' dla wyświetlenia w formularzu.
+        'categories': categories, # Unikalne kategorie.
+        'category_id': int(category_id) # Wybrana kategoria (jeśli jest określona).
     })
-
+@login_required()
 def detail(request, pk):
     # Pobierz szczegóły przedmiotu o określonym identyfikatorze (pk).
     item = get_object_or_404(Item, pk=pk)
@@ -101,6 +101,7 @@ def delete(request, pk):
     item.delete()
     return redirect('panel:index')
 
+@login_required()
 def buy(request, pk):
     # Pobieranie szczegółów przedmiotu do zakupu.
     item = get_object_or_404(Item, pk=pk)

@@ -7,11 +7,10 @@ from django.contrib.auth import get_user_model
 
 
 
-
+#1.
 
 class GlownyUrlsTest(SimpleTestCase):
     def test_index_url(self):
-        # Pobierz odwrotny URL (reverse URL) do widoku 'index' w aplikacji 'glowny'.
         url = reverse('glowny:index')
         # Porównaj funkcję obsługującą ten URL z oczekiwanym widokiem 'index'.
         self.assertEqual(resolve(url).func, views.index)
@@ -178,3 +177,8 @@ class LoginTestCase(TestCase):
         # Test, który sprawdza, czy niezalogowany użytkownik ma dostęp do widoku logowania.
         response = self.client.get(reverse('glowny:login'))
         self.assertEqual(response.status_code, 200)
+
+
+'''
+1. reverse -> znalezienie kodu po views
+'''

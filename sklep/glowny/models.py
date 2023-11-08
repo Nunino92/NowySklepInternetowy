@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 # Importowanie niezbędnych klas i modeli z modułu 'auth' Django.
 
 from django.db import models
+
+
 # Importowanie modułu 'models' z Django, który pozwala na definiowanie modeli bazy danych.
 
 class CustomUserManager(BaseUserManager):
@@ -35,6 +37,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
         # Utworzenie superużytkownika, który posiada uprawnienia administratora.
 
+
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     # Definicja niestandardowego modelu użytkownika.
 
@@ -50,11 +53,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     nr_domu = models.CharField(max_length=6, default='')
     kod_pocztowy = models.CharField(max_length=6, default='')
 
-    objects = CustomUserManager()
+    objects = CustomUserManager()  # niestandardowe metody do modelu uzytkownika
     # Przypisanie managera do modelu CustomUser.
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    USERNAME_FIELD = 'email'  # unikatowe
+    REQUIRED_FIELDS = [] #definiuje wymagane pola do rejestacji
+
     # Definiowanie pól wymaganych podczas tworzenia użytkownika.
 
     def __str__(self):

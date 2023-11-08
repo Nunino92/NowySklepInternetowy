@@ -63,7 +63,7 @@ ROOT_URLCONF = 'sklep.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],  # by szukało templates w folderze templates
+        'DIRS': ['templates'],  # by szukało templates w katalogu templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +93,7 @@ DATABASES = {
 # EMAIL_HOST_PASSWORD = 'c06PZBi9'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-AUTH_PASSWORD_RESET_TEMPLATE = 'glowny/password_reset.html'
+AUTH_PASSWORD_RESET_TEMPLATE = 'konto/password_reset.html'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'bajdak123@gmail.com'
@@ -101,7 +101,7 @@ EMAIL_HOST_PASSWORD = 'jirynirrtkfxbdzw'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-# Password validation
+
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 AUTH_USER_MODEL = 'glowny.CustomUser'  # Potrzebne by stworzyć inny model do User
 
@@ -134,9 +134,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'  # urls static css np boostrap-5
+STATIC_URL = 'static/'  # urls static css
 MEDIA_URL = 'media/'  # url gdzie beda dostepne pliki multimedialne, zdjecia do aukcji.
-MEDIA_ROOT = BASE_DIR / 'media'  # sciezka do katalogu media -> media. Tworzy sie automatycznie po dodaniu zdjecia.
+MEDIA_ROOT = BASE_DIR / 'media'  # sciezka do katalogu media na serwerze
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
