@@ -1,4 +1,3 @@
-
 from django.db import models
 
 from glowny.models import CustomUser

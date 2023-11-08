@@ -43,7 +43,7 @@ class GlownyUrlsTest(SimpleTestCase):
         url = reverse('glowny:weather_widget')
         self.assertEqual(resolve(url).func, views.weather_widget)
 
-
+#2.
 class IndexViewTest(TestCase):
     #Czy zwraca kod 200 - ok oraz czy dostepny jest strona głowna
     def test_index_view(self):
@@ -62,6 +62,8 @@ class ContactViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact.html')
 
+
+#3.
 
 class SignupViewTest(TestCase):
     #Zwraca kod 200 oraz dostep do strony singup.html
@@ -92,7 +94,7 @@ class SignupViewTest(TestCase):
         self.assertEqual(response.status_code, 302)
         # Sprawdź, czy status HTTP odpowiedzi to 302 (przekierowanie).
 
-
+#4.
 class CustomUserTestCase(TestCase):
     def setUp(self):
         # Przygotowanie danych testowych
@@ -180,5 +182,9 @@ class LoginTestCase(TestCase):
 
 
 '''
-1. reverse -> znalezienie kodu po views
+1. reverse()znalezienie kodu po views -> resolve()sprawdza czy dobrze przypisany 
+2. wysyła zapytanie get poprzez reverse -> status 200 i czy uzyty index.html
+3. rejestracja uzytkownika na przypadkowych danych
+4. 
+
 '''
