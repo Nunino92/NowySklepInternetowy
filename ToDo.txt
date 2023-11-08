@@ -5,3 +5,4 @@
 5. Formy płatności
 6. Automatyczne wylogowanie
 7. Usprawnić podkategorie
+8. Obrona przed brakiem miasta. Nie działa widget
